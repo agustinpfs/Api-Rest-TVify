@@ -35,8 +35,9 @@ $(function() {
           .replace(':summary:', show.summary)
           .replace(':img alt:', show.name + " Logo")
 
-          
-          $tvShowsContainer.append($(article))
+          var $article = $(article)
+          $article.hide();
+          $tvShowsContainer.append($article.fadeIn(3000))
       })
     }
   })
