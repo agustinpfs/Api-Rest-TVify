@@ -7,7 +7,7 @@ $(function() {
 
 
    function renderShows(shows) {
-    // $tvShowsContainer.find('.loader').remove();
+    $tvShowsContainer.find('.loader').remove();
     shows.forEach(function (show) {
       var article = template
         .replace(':name:', show.name)
@@ -56,14 +56,17 @@ $(function() {
             '<p>:summary:</p>' +
           '</div>' +
         '</article>';
-
-  $.ajax({
-    url: 'http://api.tvmaze.com/shows',
-    success: function (shows, textStatus, xhr) {
-      $tvShowsContainer.find('.loader').remove();
-      renderShows(shows);
       
-    }
-  })
-})
 
+  if (!localStorage.shows) {
+    $.ajax('http://api.tvmaze.com/shows')
+      .then(function (shows){
+        $tvShowsContainer.find('.loader').remove();
+        localStorage.shows = JSON.stringify(shows);
+        renderShows(shows);    
+      })
+  } else {
+    renderShows(JSON.parse(localStorage.shows));
+  }
+  
+})
