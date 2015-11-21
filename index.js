@@ -5,6 +5,14 @@ $(function() {
 
    var $tvShowsContainer = $('#app-body').find('.tv-shows');
 
+    $tvShowsContainer.on('click', 'button.like', function(ev){
+        var $this = $(this);
+        // $this.animate({
+        //     'fontSize':'30px'
+        // },   'fast');
+        $this.closest('.tv-show').toggleClass('liked')
+   })
+
 
    function renderShows(shows) {
     $tvShowsContainer.find('.loader').remove();
@@ -54,6 +62,7 @@ $(function() {
           '<div class="right info">' +
             '<h1>:name:</h1>' +
             '<p>:summary:</p>' +
+            '<button class="like">💙</button>'
           '</div>' +
         '</article>';
       
