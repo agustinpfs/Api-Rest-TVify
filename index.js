@@ -1,3 +1,10 @@
+/**
+*Module Dependencies
+*/
+
+var $ = require('jquery');
+
+
 $(function() {
   /**
    * Submit serach form
