@@ -2,7 +2,7 @@
 *Module Dependencies
 */
 
-import $ from 'jquery';
+import $ from 'jquery'
 
 
 $(function() {
