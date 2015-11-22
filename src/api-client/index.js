@@ -8,7 +8,7 @@ export function getShows(fn) {
 	})
 }
 
-export function searchShows(serach, fn) {
+export function searchShows(search, fn) {
 	$.ajax('http://api.tvmaze.com/search/shows', {
 		data: search,
 		success: function (res, textStatus, xhr) {

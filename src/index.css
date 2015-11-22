@@ -24,6 +24,11 @@ body {
   color: white;
 }
 
+#app-header h1 a {
+  text-decoration: none;
+  color: white
+}
+
 #app-header h1.danger {
   color: red;
 }
