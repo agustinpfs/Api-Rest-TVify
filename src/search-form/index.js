@@ -6,9 +6,9 @@ $('#app-body')
   .submit(function (ev) {
     ev.preventDefault();
     
-    var busqueda = $(this)
+    var search = $(this)
       .find('input[type="text"]')
       .val();
 
-    page(`/search?q=${busqueda}`)
+    page(`/search?q=${search}`)
   })
