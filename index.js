@@ -11,6 +11,7 @@ fs.readFile('./public/index.html', function (err, data) {
 console.log('hola mundo')
 
 var server = http.createServer(function (request,response){ //each time it runs a request
+	console.log('recibí un request ' + request-url)
 	response.writeHead('Content-Type', 'text/plain')
 	response.end('hola mundo')
 })
