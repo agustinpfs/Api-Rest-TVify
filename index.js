@@ -1,5 +1,6 @@
 var fs = require('fs')
-var data = fs.readFileSync('./public/index.html')
+fs.readFile('./public/index.html', function (err, data) {
+	console.log(data.toString().length)
+})
 
-console.log(data.toString().length)
 console.log('hola mundo')
