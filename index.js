@@ -10,8 +10,9 @@ fs.readFile('./public/index.html', function (err, data) {
 
 console.log('hola mundo')
 
-var server = http.createServer(function (request,response){
-
+var server = http.createServer(function (request,response){ //each time it runs a request
+	response.writeHead('Content-Type', 'text/plain')
+	response.end('hola mundo')
 })
 
 server.listen(3000, function(){
