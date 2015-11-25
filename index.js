@@ -1,49 +1,40 @@
 var fs = require('fs')
 var http = require('http')
 
-fs.readFile('./public/index.html', function (err, data) {
-	if (err) {
-		return console.log('no se pudo abrir: ' + err.message)
-	}
-	console.log(data.toString().length)
+function serveStatic (name, callback) {
+  fs.readFile('./public/' + name, function (err, data) {
+    if (err) {
+      return callback(err)
+    }
+    callback(err, data.toString())
+  })
+}
+
+var server = http.createServer(function (request, response) {
+  console.log('Recibi un request ' + request.url)
+  switch (request.url) {
+    case '/':
+      serveStatic('index.html', function (err, content) {
+        response.end(content)
+      })
+      break
+    case '/app.js':
+      serveStatic('app.js', function (err, content) {
+        response.end(content)
+      })
+      break
+    case '/app.css':
+      serveStatic('app.css', function (err, content) {
+        response.end(content)
+      })
+      break
+    default:
+      response.statusCode = 404
+      response.end('Not found')
+      break
+  }
 })
 
-console.log('hola mundo')
-
-var server = http.createServer(function (request,response){ //each time it runs a request
-	console.log('recibí un request ' + request.url)
-	 switch (request.url) {
-	    case '/':
-	     fs.readFile('./public/index.html', function (err, data) {
-			if (err) {
-				return console.log('no se pudo abrir: ' + err.message)
-			}
-			response.end(data.toString())
-	      })
-	      break
-	    case '/app.js':
-	      fs.readFile('./public/app.js', function (err, data) {
-			if (err) {
-				return console.log('no se pudo abrir: ' + err.message)
-			}
-			response.end(data.toString())
-	      })
-	      break
-	    case '/app.css':
-	      fs.readFile('./public/app.css', function (err, data) {
-			if (err) {
-				return console.log('no se pudo abrir: ' + err.message)
-			}
-			response.end(data.toString())
-	      })
-	      break
-      default:
-      	response.end('')
-      	break
-	  }
-	
-})
-
-server.listen(3000, function(){
-  console.log('Servidor iniciado. Escuchando el puerto 3000')
+server.listen(3000, function () {
+  console.log('Servidor iniciado. Escuchando en el puerto 3000')
 })
