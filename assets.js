@@ -1,3 +1,4 @@
+var fs = require('fs')
 
 
 module.exports.serveStatic = function serveStatic (name, callback) {
