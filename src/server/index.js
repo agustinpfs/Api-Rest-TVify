@@ -1,32 +1,20 @@
-var http = require('http')
-var assets = require('./assets.js')
+var express = require('express')
+var app = express()
+
+app.use(express.static('public'))  // middleware. each time enter a request, it will run this middelware
 
 
-var server = http.createServer((request, response) => {
-  console.log('Recibi un request ' + request.url)
-  switch (request.url) {
-    case '/':
-      assets.serveStatic('index.html', function (err, content) {
-        response.end(content)
-      })
-      break
-    case '/app.js':
-      assets.serveStatic('app.js', function (err, content) {
-        response.end(content)
-      })
-      break
-    case '/app.css':
-      assets.serveStatic('app.css', function (err, content) {
-        response.end(content)
-      })
-      break
-    default:
-      response.statusCode = 404
-      response.end('Not found')
-      break
-  }
+//endpoints
+// GET
+app.get('/votes', function(req, res){ // all request entering with GET method and /votes url, it will be captured this function and will run this callback
+  res.json([])
 })
 
-server.listen(3000, function () {
+// POST /vote/<id>
+app.post('/vote/:id',function(req, res){ // all request entering with this function
+
+})
+
+app.listen(3000, function (){
   console.log('Servidor iniciado. Escuchando en el puerto 3000')
 })
