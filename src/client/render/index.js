@@ -1,6 +1,6 @@
 import $ from 'jquery'
 // import $tvShowsContainer from '../tv-shows-container'
-import $tvShowsContainer from 'src/tv-shows-container'
+import $tvShowsContainer from 'src/client/tv-shows-container'
 
 
 var template = `<article class="tv-show">
