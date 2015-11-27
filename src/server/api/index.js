@@ -1,12 +1,13 @@
 import express from 'express'
 const router = express.Router() 
 
-const votes = {}
+var votes = {}
 
 
 //endpoints
 // GET /api/votes
 router.get('/votes', (req, res) => { // all request entering with GET method and /votes url, it will be captured this function and will run this callback
+  console.log('GET /votes')
   res.json(votes)
 })
 
