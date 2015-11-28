@@ -2,7 +2,8 @@ import express from 'express'
 const app = express() // const: la referencia no va a cambiar nunca
 
 import api from 'src/server/api'
-
+import mongoose from 'mongoose'
+mongoose.connect('mongodb://localhost/tvify')
 
 app.use(express.static('public'))  // middleware. each time enter a request, it will run this middelware
 
