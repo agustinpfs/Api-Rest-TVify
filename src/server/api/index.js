@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router() 
 
-import Vote from 'src/models'
+import Vote from 'src/server/models'
 
 
 //endpoints
