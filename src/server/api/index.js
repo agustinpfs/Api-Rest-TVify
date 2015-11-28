@@ -9,7 +9,10 @@ import Vote from 'src/server/models'
 router.get('/votes', (req, res) => { // all request entering with GET method and /votes url, it will be captured this function and will run this callback
   console.log('GET /votes')
   Vote.find({}, (err, docs) => {
-  	res.json(votes)
+  	if (err) {
+  		return res.sendStatus(500).json(err)
+  	}
+  	res.json(docs)
   })
 })
 
